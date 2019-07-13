@@ -17,5 +17,4 @@ Imports:
     htmlwidgets,
     plotly
 Remotes:
-    HuntsmanCancerInstitute/hciR,
-    bioc::3.9/DESeq2
+    HuntsmanCancerInstitute/hciR
