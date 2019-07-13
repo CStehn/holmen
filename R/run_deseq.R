@@ -53,7 +53,7 @@ run_deseq <- function(counts, samples, design = ~ trt, human = TRUE, filt_thresh
 
   message('Transforming counts')
   if(ncol(counts) <= 50) {
-    rld <- hciR::r_log(dds, blind = blind)
+    rld <- DESeq2::rlog(dds, blind = blind)
   } else {
     rld <- DESeq2::vst(dds, blind = blind)
   }
