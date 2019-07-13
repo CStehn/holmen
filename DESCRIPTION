@@ -14,4 +14,8 @@ Imports:
     DESeq2,
     hciR,
     formula.tools,
-    htmlwidgets
+    htmlwidgets,
+    plotly
+Remotes:
+    HuntsmanCancerInstitute/hciR
+    bioc::3.9/DESeq2
