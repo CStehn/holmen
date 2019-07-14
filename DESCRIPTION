@@ -3,7 +3,7 @@ Title: Runs Differential Expression Workflow For RNA-Seq
 Version: 1.0.0
 Authors@R: person("Chris", "Stehn", email = "stehn.chris@gmail.com",
                     role = c("aut","cre"))
-Description: An implementation common lab computational workflows for the Sheri Holmen Lab at the Huntsman Cancer Institute. For example, this package contains a wrapper function for the entirety of the DESeq2 workflow for differential expression analysis for RNA-Seq in R. This package utilizes pre-developed wrapper functions for multiple DESeq2 commands from hciR, developed by Chris Stubben. For more information and suggestions for additions/amendments, please contact Chris Stehn. 
+Description: An implementation of common lab computational workflows for the Sheri Holmen Lab at the Huntsman Cancer Institute. For example, this package contains a wrapper function for the entirety of the DESeq2 workflow for differential expression analysis for RNA-Seq in R. This package utilizes pre-developed wrapper functions for multiple DESeq2 commands from hciR, developed by Chris Stubben. For more information and suggestions for additions/amendments, please contact Chris Stehn. 
 Depends: R (>= 3.6.0)
 License: CC0
 Encoding: UTF-8
