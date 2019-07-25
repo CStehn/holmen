@@ -17,5 +17,5 @@ Imports:
     htmlwidgets,
     plotly
 Remotes:
-    hadley/tidyverse
+    hadley/tidyverse,
     HuntsmanCancerInstitute/hciR
