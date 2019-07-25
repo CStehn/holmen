@@ -118,7 +118,7 @@ run_deseq <- function(counts, samples, design = ~ trt, human = TRUE, filt_thresh
       }
 
       ## Convert each filtered result table into normalized count tables for plotting
-      x <- hciR::top_counts(res1, rld, filter = FALSE) %>% as_matrix()
+      x <- hciR::top_counts(res1, rld, filter = FALSE) %>% hciR::as_matrix()
       x <- x - rowMeans(x)
       n <- max(abs(range(x)))
       ## Create annotation table from colData, convert to data frame and create heatmap
