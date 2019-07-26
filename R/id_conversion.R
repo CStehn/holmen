@@ -52,7 +52,21 @@ ensembl_to_symbol <- function(IDs, mart = NULL, human = TRUE) {
   return(IDs)
 }
 
-#' @rdname ensembl_to_symbol
+#' Function for converting between Ensembl IDs and gene symbols (canonical names)
+#'
+#' This function will output the converted names of each gene as a data frame variable, either replacing the names in a given data frame or simply returning a column.
+#'
+#' @inheritParams ensembl_to_symbol
+#'
+#' @return Returns either the original counts table with converted gene IDs, or a data frame of one column with the converted IDs
+#'
+#' @author Chris Stehn
+#'
+#' @examples
+#' \dontrun{
+#' ensembl_to_symbol(counts, mart = mmu, human = FALSE)
+#' }
+#' @export
 
 symbol_to_ensembl <- function(IDs, mart = NULL, human = TRUE) {
   ## Read biomart
