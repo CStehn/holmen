@@ -5,7 +5,8 @@
 \title{Function for DESeq2 differential expression analysis workflow}
 \usage{
 run_deseq(counts, samples, design = ~trt, human = TRUE,
-  filt_threshold = 1, top = 40, blind = TRUE, font_size = 4)
+  filt_threshold = 1, top = 40, blind = TRUE, font_size = 4,
+  volcano_cols = c("black", "red"))
 }
 \arguments{
 \item{counts}{a tibble with each row representing counts from a gene of interest, the 1st column being the gene names, and each column representing a sample}
@@ -23,6 +24,8 @@ run_deseq(counts, samples, design = ~trt, human = TRUE,
 \item{blind}{a logical value specifying whether the rlog or vst transformations are blind to experimental design. Defaults to TRUE}
 
 \item{font_size}{integer specifying the font size for rows of the heatmap}
+
+\item{volcano_cols}{a length two character vector specifying two colors (either base R colors or hexadecimal) to be used for non-significant and significant genes in the volcano, respectively}
 }
 \value{
 Returns PCA for each variable along with results table, volcano, heatmap, and sample correlation heatmap using the top genes between each comparison
@@ -38,3 +41,4 @@ run_deseq(counts, samples, design = ~ gender + height, human = TRUE, filt_thresh
 \author{
 Chris Stehn
 }
+
