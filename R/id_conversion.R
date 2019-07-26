@@ -36,7 +36,7 @@ ensembl_to_symbol <- function(IDs, mart = NULL, human = TRUE) {
     ## Set colname of temp so match can be made consistently
     colnames(temp)[1] <- 'ensembl'
     ## Perform left_join of gene symbols to ensembl ids
-    symbol_match <- dplyr::left_join(temp, names, by = c('ensembl' = 'id'))
+    symbol_match <- suppressMessages(dplyr::left_join(temp, names, by = c('ensembl' = 'id')))
     ## Set column of ensembl ids equal to corresponding gene symbols
     IDs[[1]] <- symbol_match[[2]]
     colnames(IDs)[1] <- 'gene_name'
@@ -45,7 +45,7 @@ ensembl_to_symbol <- function(IDs, mart = NULL, human = TRUE) {
     ## Set colname of temp so match can be made consistently
     colnames(temp)[1] <- 'ensembl'
     ## Perform left_join of gene symbols to ensembl ids
-    symbol_match <- dplyr::left_join(temp, names, by = c('ensembl' = 'id'))
+    symbol_match <- suppressMessages(dplyr::left_join(temp, names, by = c('ensembl' = 'id')))
     ## Set column of ensembl ids equal to corresponding gene symbols
     IDs <- as.data.frame(symbol_match[[2]])
     colnames(IDs)[1] <- 'gene_name'
@@ -80,7 +80,7 @@ symbol_to_ensembl <- function(IDs, mart = NULL, human = TRUE) {
     } else {
       mart <- suppressMessages(hciR::read_biomart('mouse'))
     }
-    names <- dplyr::select(mart, id, gene_name)
+    names <- dplyr::select(mart, id, gene_name) %>% dplyr::filter(!duplicated(gene_name))
   }
 
   ## Convert ensembl IDs to gene symbols using mart
@@ -89,7 +89,7 @@ symbol_to_ensembl <- function(IDs, mart = NULL, human = TRUE) {
     ## Set colname of temp so match can be made consistently
     colnames(temp)[1] <- 'symbol'
     ## Perform left_join of ensembl ids to gene symbols
-    symbol_match <- dplyr::left_join(temp, names, by = c('symbol' = 'gene_name'))
+    symbol_match <- suppressMessages(dplyr::left_join(temp, names, by = c('symbol' = 'gene_name')))
     ## Set column of ensembl ids equal to corresponding gene symbols
     IDs[[1]] <- symbol_match[[2]]
     colnames(IDs)[1] <- 'ensembl'
@@ -98,7 +98,7 @@ symbol_to_ensembl <- function(IDs, mart = NULL, human = TRUE) {
     ## Set colname of temp so match can be made consistently
     colnames(temp)[1] <- 'symbol'
     ## Perform left_join of ensembl ids to gene symbols
-    symbol_match <- dplyr::left_join(temp, names, by = c('symbol' = 'gene_name'))
+    symbol_match <- suppressMessages(dplyr::left_join(temp, names, by = c('symbol' = 'gene_name')))
     ## Set column of ensembl ids equal to corresponding gene symbols
     IDs <- as.data.frame(symbol_match[[2]])
     colnames(IDs)[1] <- 'ensembl'
