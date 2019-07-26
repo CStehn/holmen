@@ -19,6 +19,17 @@
 ensembl_to_symbol <- function(IDs, mart = NULL, human = TRUE) {
   ## Read biomart
   if (missing(IDs)) {stop('No IDs have been supplied')}
+  
+  if (is.data.frame(IDs)) {
+    if (!grepl('ENS', IDs[1, 1])) {
+      stop('Ensembl IDs have not been supplied. Consider using symbol_to_ensembl instead')
+    }
+  } else {
+    if (!grepl('ENS', IDs[1])) {
+      stop('Ensembl IDs have not been supplied. Consider using symbol_to_ensembl instead')
+    }
+  }
+  
   if (!is.null(mart)) {
     names <- dplyr::select(mart, id, gene_name) %>% dplyr::filter(!duplicated(gene_name))
   } else {
@@ -72,6 +83,17 @@ ensembl_to_symbol <- function(IDs, mart = NULL, human = TRUE) {
 symbol_to_ensembl <- function(IDs, mart = NULL, human = TRUE) {
   ## Read biomart
   if (missing(IDs)) {stop('No IDs have been supplied')}
+  
+  if (is.data.frame(IDs)) {
+    if (grepl('ENS', IDs[1, 1])) {
+      stop('Ensembl IDs have been supplied. Consider using ensembl_to_symbol instead')
+    }
+  } else {
+    if (grepl('ENS', IDs[1])) {
+      stop('Ensembl IDs have been supplied. Consider using ensembl_to_symbol instead')
+    }
+  }
+  
   if (!is.null(mart)) {
     names <- dplyr::select(mart, id, gene_name) %>% dplyr::filter(!duplicated(gene_name))
   } else {
