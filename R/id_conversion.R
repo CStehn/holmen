@@ -20,7 +20,7 @@ ensembl_to_symbol <- function(IDs, mart = NULL, human = TRUE) {
   ## Read biomart
   if (missing(IDs)) {stop('No IDs have been supplied')}
   if (!is.null(mart)) {
-    names <- dplyr::select(mart, id, gene_name)
+    names <- dplyr::select(mart, id, gene_name) %>% dplyr::filter(!duplicated(gene_name))
   } else {
     if (human) {
       mart <- suppressMessages(hciR::read_biomart('human'))
@@ -73,7 +73,7 @@ symbol_to_ensembl <- function(IDs, mart = NULL, human = TRUE) {
   ## Read biomart
   if (missing(IDs)) {stop('No IDs have been supplied')}
   if (!is.null(mart)) {
-    names <- dplyr::select(mart, id, gene_name)
+    names <- dplyr::select(mart, id, gene_name) %>% dplyr::filter(!duplicated(gene_name))
   } else {
     if (human) {
       mart <- suppressMessages(hciR::read_biomart('human'))
