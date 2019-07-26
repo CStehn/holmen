@@ -18,6 +18,7 @@
 
 ensembl_to_symbol <- function(IDs, mart = NULL, human = TRUE) {
   ## Read biomart
+  if (missing(IDs)) {stop('No IDs have been supplied')}
   if (!is.null(mart)) {
     names <- dplyr::select(mart, id, gene_name)
   } else {
@@ -70,6 +71,7 @@ ensembl_to_symbol <- function(IDs, mart = NULL, human = TRUE) {
 
 symbol_to_ensembl <- function(IDs, mart = NULL, human = TRUE) {
   ## Read biomart
+  if (missing(IDs)) {stop('No IDs have been supplied')}
   if (!is.null(mart)) {
     names <- dplyr::select(mart, id, gene_name)
   } else {
