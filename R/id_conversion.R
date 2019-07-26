@@ -27,7 +27,7 @@ ensembl_to_symbol <- function(IDs, mart = NULL, human = TRUE) {
     } else {
       mart <- suppressMessages(hciR::read_biomart('mouse'))
     }
-    names <- dplyr::select(mart, id, gene_name)
+    names <- dplyr::select(mart, id, gene_name) %>% dplyr::filter(!duplicated(gene_name))
   }
 
   ## Convert ensembl IDs to gene symbols using mart
