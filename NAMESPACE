@@ -3,4 +3,5 @@
 export("%>%")
 export(ensembl_to_symbol)
 export(run_deseq)
+export(symbol_to_ensembl)
 importFrom(magrittr,"%>%")
