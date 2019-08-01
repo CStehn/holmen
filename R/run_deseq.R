@@ -46,9 +46,9 @@ run_deseq <- function(counts, samples, design = ~ trt, human = TRUE, filt_thresh
   dds <- suppressMessages(DESeq2::DESeq(dds))
   ## Create annotation table using read_biomart function of hciR
   message('Downloading annotation table')
-  if(human) {bio <- suppressMessages(hciR::read_biomart('human'))
+  if(human) {bio <- data(hsa)
   } else {
-    bio <- suppressMessages(hciR::read_biomart('mouse'))
+    bio <- data(mmu)
   }
 
 
