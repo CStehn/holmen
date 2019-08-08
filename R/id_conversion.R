@@ -34,9 +34,9 @@ ensembl_to_symbol <- function(IDs, mart = NULL, human = TRUE) {
     names <- dplyr::select(mart, id, gene_name) %>% dplyr::filter(!duplicated(gene_name))
   } else {
     if (human) {
-      mart <- data(hsa)
+      mart <- data(hsa, package = 'holmen')
     } else {
-      mart <- data(mmu)
+      mart <- data(mmu, package = 'holmen')
     }
     names <- dplyr::select(mart, id, gene_name) %>% dplyr::filter(!duplicated(gene_name))
   }
@@ -98,9 +98,9 @@ symbol_to_ensembl <- function(IDs, mart = NULL, human = TRUE) {
     names <- dplyr::select(mart, id, gene_name) %>% dplyr::filter(!duplicated(gene_name))
   } else {
     if (human) {
-      mart <- data(hsa)
+      mart <- data(hsa, package = 'holmen')
     } else {
-      mart <- data(mmu)
+      mart <- data(mmu, package = 'holmen')
     }
     names <- dplyr::select(mart, id, gene_name) %>% dplyr::filter(!duplicated(gene_name))
   }
